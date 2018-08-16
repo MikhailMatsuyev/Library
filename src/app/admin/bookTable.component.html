@@ -1,0 +1,30 @@
+<table class="table table-sm table-striped">
+    <thead>
+        <tr>
+            <th>ID</th><th>Название</th><th>Жанр</th><th>Год</th><th>Обложка</th><th>Аннотация</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let p of getProducts()">
+            <td>{{p.id}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.category}}</td>
+            <td>{{p.year}}</td>
+            <td>{{p.img}}</td>
+            <td>{{p.description}}</td>
+            <td>
+                <button class="btn btn-sm btn-warning"
+                        [routerLink]="['/admin/main/products/edit', p.id]">
+                    Изменить
+                </button>
+                <button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">
+                    Удалить
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button class="btn btn-primary" routerLink="/admin/main/products/create">
+    Добавить новую книгу
+</button>

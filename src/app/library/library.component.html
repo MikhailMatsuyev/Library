@@ -1,0 +1,41 @@
+<div class="navbar navbar-inverse bg-inverse">
+    <a class="navbar-brand">Библиотека</a>
+</div>
+<div class="col-xs-3 p-a-1">
+    <button class="btn btn-block btn-danger m-t-3" routerLink="/admin">
+        Admin
+    </button>
+</div>
+<div class="col-xs-9 p-a-1">
+  <label for='input-search-name'>Поиск по названию</label>
+  <div class="input-group">
+    <input  #byName (keyup)="changeBookName(byName.value)" class="form-control" placeholder="Введите название, например, элементарные частицы" id='input-search-name'>
+  </div>
+
+  <label for='input-search-name'>Поиск по жанру</label>
+  <div class="input-group">
+    <input #box (keyup)="changeCategory(box.value)" class="form-control" placeholder="Введите жанр, например, поэзия" id='input-search-category'>
+  </div>
+
+  <div *ngFor="let book of books" class="card card-outline-primary" >
+    <h4 class="card-header">
+      {{book.name}} | <small>{{book.category}}</small>
+      <span class="pull-xs-right tag tag-pill tag-primary">
+          {{ book.year }}
+      </span>
+    </h4>
+
+    <div class="card-text p-a-1" *ngIf="book.name === prod">
+      <img src={{book.img}} class="img-thumbnail float-left">
+      <p >{{book.description}}</p>
+      <button class="btn btn-success btn-sm"
+              (click)="addBookToAbout(book)">
+        Вывести информацию на отдельную страницу
+      </button>
+    </div>
+
+    <span (click)="showMore(book.name)">{{book.name === prod?'Less':'More'}}</span>
+    <span (click)="showMore(book.name)"></span>
+  </div>
+  <div *ngIf="!books.length" class="card card-outline-primary text-xs-center">No Matching records found! Try another search!</div>
+</div>

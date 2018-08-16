@@ -1,0 +1,31 @@
+<div class="navbar navbar-inverse bg-inverse">
+    <a class="navbar-brand">Дополнительная информация</a>
+</div>
+
+<div class="m-a-1">
+    <h2 class="text-xs-center">Книга</h2>
+    <table class="table table-bordered table-striped p-a-1">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Год издания</th>
+                <th>Жанр</th>
+                <th>Обложка</th>
+                <th>Аннотация</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let line of about.lines">
+                <td>{{line.book.name}}</td>
+                <td>{{line.book.year}}</td>
+                <td>{{line.book.category}}</td>
+                <td><img src={{line.book.img}} class="img-thumbnail"></td>
+                <td>{{line.book.description}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="text-xs-center">
+    <button class="btn btn-primary" routerLink="/store">Назад</button>
+</div>

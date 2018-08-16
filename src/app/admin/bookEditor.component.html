@@ -1,0 +1,37 @@
+<div class="bg-primary p-a-1" [class.bg-warning]="editing">
+    <h5>{{editing  ? "Редактировать" : "Создать"}} Книгу</h5>
+</div>
+<form novalidate #form="ngForm" (ngSubmit)="save(form)" >
+    <div class="form-group">
+        <label>Название</label>
+        <input class="form-control" name="name" [(ngModel)]="product.name" />
+    </div>
+    <div class="form-group">
+        <label>Жанр</label>
+        <input class="form-control" name="category" [(ngModel)]="product.category" />
+    </div>
+    <div class="form-group">
+        <label>Аннотация</label>
+        <textarea class="form-control" name="description"
+                  [(ngModel)]="product.description">
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label>Год издания</label>
+        <input class="form-control" name="year" [(ngModel)]="product.year" />
+    </div>
+    <div class="form-group">
+      <label>Обложка</label>
+      <input class="form-control" name="picture" [(ngModel)]="product.img" />
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary" [class.btn-warning]="editing">
+        {{editing ? "Save" : "Create"}}
+    </button>
+    <button type="reset" class="btn btn-secondary" routerLink="/admin/main/products">
+        Cancel
+    </button>
+</form>
